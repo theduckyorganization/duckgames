@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#173d35">
+  <meta name="description" content="Lucky Duck Shoot — a family-friendly carnival shooting gallery game with wooden toy ducks.">
+  <title>Lucky Duck Shoot</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="logo" href="#top" aria-label="Lucky Duck Shoot home"><span>LUCKY</span><b>DUCK</b><i>SHOOT</i></a>
+    <p>THE FRIENDLIEST SHOOTING GALLERY IN TOWN</p>
+    <button class="how-button" type="button">HOW TO PLAY</button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="star-line">★ &nbsp; · &nbsp; ★ &nbsp; · &nbsp; ★</div>
+      <p class="eyebrow">STEP RIGHT UP!</p>
+      <h1>LUCKY <span>DUCK</span><br>SHOOT</h1>
+      <p class="tagline">Aim true. Hit the toy ducks. Win the high score!</p>
+      <div class="marquee"><span>★</span> CARNIVAL CLASSIC <span>★</span></div>
+    </section>
+
+    <section class="game-wrap" aria-labelledby="game-title">
+      <h2 id="game-title" class="sr-only">Duck shooting game</h2>
+      <div class="scoreboard">
+        <div><small>SCORE</small><strong id="score">0000</strong></div>
+        <div class="time-box"><small>TIME</small><strong><span id="time">30</span><i>s</i></strong></div>
+        <div><small>SHOTS</small><strong id="shots" class="shot-dots" aria-label="10 shots remaining">●●●●●●●●●●</strong></div>
+      </div>
+
+      <div id="gallery" class="gallery">
+        <div class="awning"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        <div class="bulbs" aria-hidden="true"></div>
+        <div class="back-sign">LUCKY DUCK</div>
+        <div class="lane lane-one" data-lane="0"></div>
+        <div class="lane lane-two" data-lane="1"></div>
+        <div class="lane lane-three" data-lane="2"></div>
+        <div class="water-front"></div>
+
+        <div id="overlay" class="overlay">
+          <p id="overlay-label">READY, SHOOTER?</p>
+          <strong id="overlay-score">30 SECONDS • 10 SHOTS</strong>
+          <button id="start-button" type="button">START GAME</button>
+        </div>
+        <div id="hit-message" class="hit-message" aria-live="polite"></div>
+      </div>
+      <p class="safety">🎯 All ducks are cheerful wooden carnival targets — no real animals here!</p>
+    </section>
+
+    <section class="rules" id="rules">
+      <article><span>01</span><div><h2>AIM</h2><p>Move your pointer or tap a toy duck to line up your shot.</p></div></article>
+      <article><span>02</span><div><h2>SHOOT</h2><p>Hit the moving targets before they cross the gallery.</p></div></article>
+      <article><span>03</span><div><h2>SCORE</h2><p>Yellow and blue ducks score 10. Rare pink ducks score 20.</p></div></article>
+    </section>
+  </main>
+
+  <dialog id="how-dialog">
+    <button class="close-dialog" type="button" aria-label="Close instructions">×</button>
+    <p class="eyebrow">HOW TO PLAY</p>
+    <h2>Hit the toy ducks!</h2>
+    <ol><li>Press <b>Start Game</b>.</li><li>Click or tap a moving duck to shoot.</li><li>You have 30 seconds and 10 shots.</li><li>Pink ducks are worth double points.</li></ol>
+    <button class="dialog-play" type="button">LET'S PLAY</button>
+  </dialog>
+
+  <footer><div class="logo"><span>LUCKY</span><b>DUCK</b><i>SHOOT</i></div><p>Made for all ages • No real ducks were ruffled</p><b>KEEP IT QUACKIN'</b></footer>
+  <script src="script.js"></script>
+</body>
+</html>
