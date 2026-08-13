@@ -1,72 +1,412 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#173d35">
-  <meta name="description" content="Lucky Duck Shoot — a family-friendly carnival shooting gallery game with wooden toy ducks.">
-  <title>Lucky Duck Shoot</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header class="topbar">
-    <a class="logo" href="#top" aria-label="Lucky Duck Shoot home"><span>LUCKY</span><b>DUCK</b><i>SHOOT</i></a>
-    <p>THE FRIENDLIEST SHOOTING GALLERY IN TOWN</p>
-    <button class="how-button" type="button">HOW TO PLAY</button>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="star-line">★ &nbsp; · &nbsp; ★ &nbsp; · &nbsp; ★</div>
-      <p class="eyebrow">STEP RIGHT UP!</p>
-      <h1>LUCKY <span>DUCK</span><br>SHOOT</h1>
-      <p class="tagline">Aim true. Hit the toy ducks. Win the high score!</p>
-      <div class="marquee"><span>★</span> CARNIVAL CLASSIC <span>★</span></div>
-    </section>
-
-    <section class="game-wrap" aria-labelledby="game-title">
-      <h2 id="game-title" class="sr-only">Duck shooting game</h2>
-      <div class="scoreboard">
-        <div><small>SCORE</small><strong id="score">0000</strong></div>
-        <div class="time-box"><small>TIME</small><strong><span id="time">30</span><i>s</i></strong></div>
-        <div><small>SHOTS</small><strong id="shots" class="shot-dots" aria-label="10 shots remaining">●●●●●●●●●●</strong></div>
-      </div>
-
-      <div id="gallery" class="gallery">
-        <div class="awning"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-        <div class="bulbs" aria-hidden="true"></div>
-        <div class="back-sign">LUCKY DUCK</div>
-        <div class="lane lane-one" data-lane="0"></div>
-        <div class="lane lane-two" data-lane="1"></div>
-        <div class="lane lane-three" data-lane="2"></div>
-        <div class="water-front"></div>
-
-        <div id="overlay" class="overlay">
-          <p id="overlay-label">READY, SHOOTER?</p>
-          <strong id="overlay-score">30 SECONDS • 10 SHOTS</strong>
-          <button id="start-button" type="button">START GAME</button>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#513bc6" />
+    <meta
+      name="description"
+      content="Duck Games — bộ trò chơi vịt vui nhộn dành cho trẻ em và gia đình."
+    />
+    <title>Duck Games Arcade</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand">
+          <span class="brand-duck sprite s1"></span>
+          <div><b>DUCK</b><strong>GAMES</strong></div>
         </div>
-        <div id="hit-message" class="hit-message" aria-live="polite"></div>
-      </div>
-      <p class="safety">🎯 All ducks are cheerful wooden carnival targets — no real animals here!</p>
-    </section>
+        <button class="close-menu" id="close-menu" aria-label="Đóng danh sách">
+          ×
+        </button>
+        <nav aria-label="Danh sách trò chơi">
+          <p class="nav-label">DƯỚI 5 TUỔI</p>
+          <button class="game-link active" data-game="happy">
+            <span class="mini-sprite sprite s1"></span
+            ><i><b>Tìm Vịt Vui</b><small>2–5 tuổi · Dễ</small></i>
+          </button>
+          <button class="game-link" data-game="feed">
+            <span class="mini-sprite sprite s14"></span
+            ><i><b>Cho Vịt Ăn</b><small>2–5 tuổi · Dễ</small></i>
+          </button>
+          <button class="game-link" data-game="count">
+            <span class="mini-sprite sprite s5"></span
+            ><i><b>Đếm Vịt Con</b><small>2–5 tuổi · Dễ</small></i>
+          </button>
+          <button class="game-link" data-game="color">
+            <span class="mini-sprite sprite s11"></span
+            ><i><b>Ghép Màu</b><small>2–5 tuổi · Dễ</small></i>
+          </button>
+          <button class="game-link" data-game="dress">
+            <span class="mini-sprite sprite s9"></span
+            ><i><b>Mặc Đồ Cho Vịt</b><small>2–5 tuổi · Dễ</small></i>
+          </button>
+          <button class="game-link" data-game="bath">
+            <span class="mini-sprite sprite s1"></span
+            ><i><b>Tắm Cho Vịt</b><small>2–5 tuổi · Dễ</small></i>
+          </button>
+          <p class="nav-label">5–14 TUỔI</p>
+          <button class="game-link" data-game="memory">
+            <span class="mini-sprite sprite s2"></span
+            ><i><b>Ghép Đôi Cảm Xúc</b><small>5–14 tuổi · Vừa</small></i>
+          </button>
+          <button class="game-link" data-game="shoot">
+            <span class="mini-sprite sprite s13"></span
+            ><i><b>Lucky Duck Shoot</b><small>6–14 tuổi · Vừa</small></i>
+          </button>
+          <button class="game-link" data-game="maze">
+            <span class="mini-sprite sprite s8"></span
+            ><i><b>Mê Cung Vịt</b><small>5–14 tuổi · Vừa</small></i>
+          </button>
+          <button class="game-link" data-game="math">
+            <span class="mini-sprite sprite s5"></span
+            ><i><b>Toán Nhanh</b><small>6–14 tuổi · Vừa</small></i>
+          </button>
+          <button class="game-link" data-game="typing">
+            <span class="mini-sprite sprite s13"></span
+            ><i><b>Đua Vịt Gõ Chữ</b><small>7–14 tuổi · Vừa</small></i>
+          </button>
+          <button class="game-link" data-game="rhythm">
+            <span class="mini-sprite sprite s11"></span
+            ><i><b>Nhịp Điệu Quack</b><small>5–14 tuổi · Khó</small></i>
+          </button>
+        </nav>
+        <div class="sidebar-note">
+          <span>★</span>
+          <p><b>12 trò chơi</b><br />Không quảng cáo · Chơi miễn phí</p>
+        </div>
+      </aside>
 
-    <section class="rules" id="rules">
-      <article><span>01</span><div><h2>AIM</h2><p>Move your pointer or tap a toy duck to line up your shot.</p></div></article>
-      <article><span>02</span><div><h2>SHOOT</h2><p>Hit the moving targets before they cross the gallery.</p></div></article>
-      <article><span>03</span><div><h2>SCORE</h2><p>Yellow and blue ducks score 10. Rare pink ducks score 20.</p></div></article>
-    </section>
-  </main>
+      <main class="main-area">
+        <header class="topbar">
+          <button
+            id="open-menu"
+            class="menu-button"
+            aria-label="Mở danh sách trò chơi"
+          >
+            ☰
+          </button>
+          <div>
+            <p>DUCK GAME ARCADE</p>
+            <h1 id="page-title">Tìm Vịt Vui</h1>
+          </div>
+          <div class="top-actions">
+            <span id="age-badge">2–5 TUỔI</span
+            ><button id="sound-button" aria-label="Bật hoặc tắt âm thanh">
+              🔊
+            </button>
+          </div>
+        </header>
 
-  <dialog id="how-dialog">
-    <button class="close-dialog" type="button" aria-label="Close instructions">×</button>
-    <p class="eyebrow">HOW TO PLAY</p>
-    <h2>Hit the toy ducks!</h2>
-    <ol><li>Press <b>Start Game</b>.</li><li>Click or tap a moving duck to shoot.</li><li>You have 30 seconds and 10 shots.</li><li>Pink ducks are worth double points.</li></ol>
-    <button class="dialog-play" type="button">LET'S PLAY</button>
-  </dialog>
+        <section
+          class="game-panel active"
+          id="game-happy"
+          aria-labelledby="happy-title"
+        >
+          <div class="game-intro">
+            <div>
+              <span class="pill toddler">DƯỚI 5 TUỔI</span>
+              <h2 id="happy-title">Tìm chú vịt đang vui!</h2>
+              <p>
+                Hãy nhìn thật kỹ và chạm vào chú vịt có khuôn mặt đúng với yêu
+                cầu.
+              </p>
+            </div>
+            <div class="compact-score">ĐIỂM <b id="happy-score">0</b></div>
+          </div>
+          <div class="happy-board">
+            <div class="prompt" id="happy-prompt">
+              🎯 Hãy tìm chú vịt đang <b>VUI VẺ</b>
+            </div>
+            <div class="duck-grid" id="happy-grid"></div>
+            <div
+              class="result-message"
+              id="happy-message"
+              aria-live="polite"
+            ></div>
+          </div>
+          <button class="primary-button" id="happy-next">
+            CÂU TIẾP THEO →
+          </button>
+        </section>
 
-  <footer><div class="logo"><span>LUCKY</span><b>DUCK</b><i>SHOOT</i></div><p>Made for all ages • No real ducks were ruffled</p><b>KEEP IT QUACKIN'</b></footer>
-  <script src="script.js"></script>
-</body>
+        <section class="game-panel" id="game-feed" aria-labelledby="feed-title">
+          <div class="game-intro">
+            <div>
+              <span class="pill toddler">DƯỚI 5 TUỔI</span>
+              <h2 id="feed-title">Cho vịt ăn nhé!</h2>
+              <p>
+                Chạm vào món ăn tốt cho vịt. Đừng chọn rác hoặc đồ vật không ăn
+                được.
+              </p>
+            </div>
+            <div class="compact-score">ĐÃ ĂN <b id="feed-score">0</b>/8</div>
+          </div>
+          <div class="feed-stage">
+            <div class="feed-duck sprite s14" id="feed-duck"></div>
+            <div class="speech" id="feed-speech">Mình đói rồi! 🥣</div>
+            <div class="food-grid" id="food-grid"></div>
+          </div>
+          <button class="primary-button hidden" id="feed-restart">
+            CHƠI LẠI ↻
+          </button>
+        </section>
+
+        <section
+          class="game-panel"
+          id="game-memory"
+          aria-labelledby="memory-title"
+        >
+          <div class="game-intro">
+            <div>
+              <span class="pill older">5–14 TUỔI</span>
+              <h2 id="memory-title">Ghép đôi cảm xúc</h2>
+              <p>Lật hai thẻ mỗi lượt và tìm hai chú vịt có cùng biểu cảm.</p>
+            </div>
+            <div class="stats">
+              <span>LƯỢT <b id="memory-moves">0</b></span
+              ><span>CẶP <b id="memory-pairs">0</b>/6</span>
+            </div>
+          </div>
+          <div class="memory-grid" id="memory-grid"></div>
+          <button class="primary-button" id="memory-restart">
+            XÁO LẠI THẺ ↻
+          </button>
+        </section>
+
+        <section class="game-panel" id="game-count">
+          <div class="game-intro">
+            <div>
+              <span class="pill toddler">DƯỚI 5 TUỔI</span>
+              <h2>Đếm vịt con</h2>
+              <p>Đếm số vịt trên màn hình rồi chọn con số đúng.</p>
+            </div>
+            <div class="compact-score">ĐIỂM <b id="count-score">0</b></div>
+          </div>
+          <div class="simple-stage">
+            <div class="count-pond" id="count-pond"></div>
+            <div class="number-choices" id="number-choices"></div>
+            <div class="result-message" id="count-message"></div>
+          </div>
+          <button class="primary-button" id="count-next">CÂU TIẾP →</button>
+        </section>
+
+        <section class="game-panel" id="game-color">
+          <div class="game-intro">
+            <div>
+              <span class="pill toddler">DƯỚI 5 TUỔI</span>
+              <h2>Ghép màu cùng vịt</h2>
+              <p>Chạm vào ô có màu giống màu mà chú vịt yêu cầu.</p>
+            </div>
+            <div class="compact-score">ĐIỂM <b id="color-score">0</b></div>
+          </div>
+          <div class="simple-stage color-stage">
+            <div class="color-duck sprite s11"></div>
+            <h3 id="color-question">Hãy tìm màu VÀNG</h3>
+            <div class="color-choices" id="color-choices"></div>
+            <div class="result-message" id="color-message"></div>
+          </div>
+          <button class="primary-button" id="color-next">
+            MÀU TIẾP THEO →
+          </button>
+        </section>
+
+        <section class="game-panel" id="game-dress">
+          <div class="game-intro">
+            <div>
+              <span class="pill toddler">DƯỚI 5 TUỔI</span>
+              <h2>Mặc đồ cho vịt</h2>
+              <p>Chọn mũ, kính và phụ kiện để tạo chú vịt của riêng bạn.</p>
+            </div>
+          </div>
+          <div class="simple-stage dress-stage">
+            <div class="dress-canvas">
+              <div class="dress-duck sprite s1"></div>
+              <span id="hat-layer"></span><span id="glasses-layer"></span
+              ><span id="accessory-layer"></span>
+            </div>
+            <div class="dress-options">
+              <h3>MŨ</h3>
+              <div>
+                <button data-layer="hat" data-item="🎩">🎩</button
+                ><button data-layer="hat" data-item="👑">👑</button
+                ><button data-layer="hat" data-item="🧢">🧢</button
+                ><button data-layer="hat" data-item="">✕</button>
+              </div>
+              <h3>KÍNH</h3>
+              <div>
+                <button data-layer="glasses" data-item="🕶️">🕶️</button
+                ><button data-layer="glasses" data-item="👓">👓</button
+                ><button data-layer="glasses" data-item="🥽">🥽</button
+                ><button data-layer="glasses" data-item="">✕</button>
+              </div>
+              <h3>PHỤ KIỆN</h3>
+              <div>
+                <button data-layer="accessory" data-item="🎀">🎀</button
+                ><button data-layer="accessory" data-item="🌸">🌸</button
+                ><button data-layer="accessory" data-item="⭐">⭐</button
+                ><button data-layer="accessory" data-item="">✕</button>
+              </div>
+            </div>
+          </div>
+          <button class="primary-button" id="dress-random">
+            CHỌN NGẪU NHIÊN ✨
+          </button>
+        </section>
+
+        <section class="game-panel" id="game-bath">
+          <div class="game-intro">
+            <div>
+              <span class="pill toddler">DƯỚI 5 TUỔI</span>
+              <h2>Tắm cho vịt</h2>
+              <p>Chạm vào tất cả bong bóng để giúp chú vịt sạch sẽ.</p>
+            </div>
+            <div class="compact-score">
+              BONG BÓNG <b id="bubble-count">12</b>
+            </div>
+          </div>
+          <div class="simple-stage bath-stage" id="bath-stage">
+            <div class="bath-duck sprite s1"></div>
+            <div id="bubbles"></div>
+            <div class="result-message" id="bath-message"></div>
+          </div>
+          <button class="primary-button" id="bath-restart">TẮM LẠI ↻</button>
+        </section>
+
+        <section
+          class="game-panel"
+          id="game-shoot"
+          aria-labelledby="shoot-title"
+        >
+          <div class="game-intro">
+            <div>
+              <span class="pill older">6–14 TUỔI</span>
+              <h2 id="shoot-title">Lucky Duck Shoot</h2>
+              <p>Bắn các chú vịt gỗ trong hội chợ. Vịt hồng được 20 điểm!</p>
+            </div>
+            <div class="stats">
+              <span>ĐIỂM <b id="shoot-score">0</b></span
+              ><span>GIỜ <b id="shoot-time">30</b>s</span
+              ><span>ĐẠN <b id="shoot-shots">10</b></span>
+            </div>
+          </div>
+          <div class="shoot-stage" id="shoot-stage">
+            <div class="fair-sign">LUCKY DUCK</div>
+            <div class="shoot-lane l1"></div>
+            <div class="shoot-lane l2"></div>
+            <div class="shoot-lane l3"></div>
+            <div class="shoot-overlay" id="shoot-overlay">
+              <span class="sprite s13"></span>
+              <h3 id="shoot-end-title">Sẵn sàng chưa?</h3>
+              <p id="shoot-end-score">30 giây · 10 phát bắn</p>
+              <button id="shoot-start">BẮT ĐẦU</button>
+            </div>
+          </div>
+          <p class="safety">
+            🎯 Đây là những chú vịt đồ chơi bằng gỗ — không có động vật thật.
+          </p>
+        </section>
+
+        <section class="game-panel" id="game-maze">
+          <div class="game-intro">
+            <div>
+              <span class="pill older">5–14 TUỔI</span>
+              <h2>Mê cung vịt</h2>
+              <p>Dùng các nút mũi tên hoặc bàn phím để đưa vịt đến ao.</p>
+            </div>
+            <div class="compact-score">BƯỚC <b id="maze-steps">0</b></div>
+          </div>
+          <div class="maze-wrap">
+            <div class="maze-grid" id="maze-grid"></div>
+            <div class="maze-controls">
+              <button data-move="up">↑</button>
+              <div>
+                <button data-move="left">←</button
+                ><button data-move="down">↓</button
+                ><button data-move="right">→</button>
+              </div>
+            </div>
+          </div>
+          <button class="primary-button" id="maze-restart">
+            MÊ CUNG MỚI ↻
+          </button>
+        </section>
+
+        <section class="game-panel" id="game-math">
+          <div class="game-intro">
+            <div>
+              <span class="pill older">6–14 TUỔI</span>
+              <h2>Toán nhanh cùng vịt</h2>
+              <p>Giải đúng phép tính trước khi đồng hồ về 0.</p>
+            </div>
+            <div class="stats">
+              <span>ĐIỂM <b id="math-score">0</b></span
+              ><span>GIỜ <b id="math-time">30</b>s</span>
+            </div>
+          </div>
+          <div class="simple-stage math-stage">
+            <div class="math-duck sprite s5"></div>
+            <div class="math-question" id="math-question">3 + 4 = ?</div>
+            <div class="math-choices" id="math-choices"></div>
+            <button class="primary-button" id="math-start">
+              BẮT ĐẦU 30 GIÂY
+            </button>
+          </div>
+        </section>
+
+        <section class="game-panel" id="game-typing">
+          <div class="game-intro">
+            <div>
+              <span class="pill older">7–14 TUỔI</span>
+              <h2>Đua vịt gõ chữ</h2>
+              <p>Gõ đúng từ tiếng Anh để chú vịt bơi về đích.</p>
+            </div>
+            <div class="compact-score">
+              TỪ ĐÚNG <b id="typing-score">0</b>/10
+            </div>
+          </div>
+          <div class="simple-stage typing-stage">
+            <div class="race-track">
+              <div class="race-duck sprite s13" id="race-duck"></div>
+              <span class="finish-line">🏁</span>
+            </div>
+            <div class="typing-word" id="typing-word">DUCK</div>
+            <input
+              id="typing-input"
+              autocomplete="off"
+              placeholder="Gõ từ ở đây…"
+            />
+            <p id="typing-message">Nhấn Bắt đầu để chơi</p>
+            <button class="primary-button" id="typing-start">BẮT ĐẦU</button>
+          </div>
+        </section>
+
+        <section class="game-panel" id="game-rhythm">
+          <div class="game-intro">
+            <div>
+              <span class="pill older">5–14 TUỔI</span>
+              <h2>Nhịp điệu Quack</h2>
+              <p>Ghi nhớ chuỗi màu phát sáng rồi chạm lại đúng thứ tự.</p>
+            </div>
+            <div class="compact-score">CẤP <b id="rhythm-level">0</b></div>
+          </div>
+          <div class="simple-stage rhythm-stage">
+            <div class="rhythm-duck sprite s11"></div>
+            <div class="rhythm-pads">
+              <button data-pad="0" class="pad red"></button
+              ><button data-pad="1" class="pad yellow"></button
+              ><button data-pad="2" class="pad green"></button
+              ><button data-pad="3" class="pad blue"></button>
+            </div>
+            <p id="rhythm-message">Sẵn sàng ghi nhớ?</p>
+            <button class="primary-button" id="rhythm-start">BẮT ĐẦU</button>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
 </html>
